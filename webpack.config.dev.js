@@ -13,6 +13,7 @@ export default {
     // must be first entry to properly set public path
     './assets/js/webpack-public-path',
     'babel-polyfill',
+    'whatwg-fetch',
     'webpack/hot/only-dev-server?http://127.0.0.1:3000',
     'webpack-hot-middleware/client?reload=true&path=http://127.0.0.1:3000/__webpack_hmr',
     './assets/js/index'
