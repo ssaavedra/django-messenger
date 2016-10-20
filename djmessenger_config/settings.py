@@ -171,6 +171,10 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+MEDIA_URL = '/uploads/'
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads')
+
 
 STATICFILES_DIRS = (
     # We do this so that django's collectstatic copies our bundles to the

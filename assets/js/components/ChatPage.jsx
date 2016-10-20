@@ -52,6 +52,13 @@ class ChatPage extends React.Component {
     return this.userAsString(msgUser[0].user)
   }
 
+  getPictureForMessage(msg) {
+    let users = this.props.users
+    let msgUser = users.filter((u) => u.user.id === msg.sender)
+    console.log("Pic URL is", msgUser[0].profile_picture)
+    return msgUser[0].profile_picture
+  }
+
   renderMessages() {
     if (!this.chat()) {
       return "No messages yet..."
@@ -63,7 +70,7 @@ class ChatPage extends React.Component {
       this.getMessages().map((item, itemIndex) =>
         <Media.ListItem key={itemIndex}>
         <Media.Left>
-          <img width={64} height={64} src="/assets/thumbnail.png" alt="Profile picture" />
+          <img width={64} height={64} src={this.getPictureForMessage(item)} alt="Profile picture" />
         </Media.Left>
         <Media.Body>
           <Media.Heading>
