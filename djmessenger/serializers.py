@@ -19,3 +19,26 @@ class UserProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.UserProfile
         depth = 1
+
+
+class ChatRoomSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = models.ChatRoom
+
+
+class ReadOnlyChatRoomSerializer(serializers.ModelSerializer):
+    participants = UserProfileSerializer(many=True)
+    admins = UserProfileSerializer(many=True)
+
+    class Meta:
+        model = models.ChatRoom
+
+
+class MesssageSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = models.Message
+        extra_kwargs = {
+            'timestamp': {
+                'read_only': True,
+            },
+        }
