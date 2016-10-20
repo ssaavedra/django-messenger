@@ -16,6 +16,11 @@ class UserProfile(models.Model):
 
 
 class ChatRoom(models.Model):
+    title = models.CharField(
+        max_length=100,
+        null=True,
+        blank=True,
+    )
     participants = models.ManyToManyField(UserProfile, related_name='chats')
     admins = models.ManyToManyField(
         UserProfile,
