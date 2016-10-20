@@ -55,7 +55,6 @@ class ChatPage extends React.Component {
   getPictureForMessage(msg) {
     let users = this.props.users
     let msgUser = users.filter((u) => u.user.id === msg.sender)
-    console.log("Pic URL is", msgUser[0].profile_picture)
     return msgUser[0].profile_picture
   }
 
