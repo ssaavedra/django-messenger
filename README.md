@@ -47,6 +47,26 @@ Finally, start the backend WSGI Django server with:
     ./manage.py runserver
 
 
+Preparing for deployment
+========================
+
+The development process expects node running in the background, so
+that hot patches to React files can be propgated to the browser
+immediately. However, that is preferrably not wanted on a formal
+deployment. In that case, run:
+
+    npm run build
+
+That will create a bundle bundle in assets/bundles. Now you can run
+./manage.py runserver or whichever delopyment method you use on your
+server.
+
+Keep in mind you need to access the static files at /bundles, /static
+and so on in order to enjoy the full functionality. To make it easy,
+Django is configured to serve those files too, in case you don't put a
+frontend server.
+
+
 License
 =======
 
