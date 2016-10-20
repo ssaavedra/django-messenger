@@ -20,7 +20,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'q@luz@qz=tf01ibkwnqz^%gwl$0z5(78la5ldh!!s78a9x3una'
+SECRET_KEY = os.environ.get('SECRET_KEY', 'q@luz@qz=tf01ibkwnqz^%gwl$0z5(78la5ldh!!s78a9x3una')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -37,8 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'social.apps.django_app.default',
     'webpack_loader',
     'djmessenger',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -100,6 +102,54 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+
+AUTHENTICATION_BACKENDS = [
+        'social.backends.google.GoogleOAuth2',
+        'social.backends.twitter.TwitterOAuth',
+        'django.contrib.auth.backends.ModelBackend',
+]
+
+SOCIAL_AUTH_ADMIN_USER_SEARCH_FIELDS = ['username', 'first_name', 'email']
+
+SOCIAL_AUTH_URL_NAMESPACE = 'social'
+
+SOCIAL_AUTH_TWITTER_KEY = os.environ.get('TWITTER_OAUTH_KEY', '')
+SOCIAL_AUTH_TWITTER_SECRET = os.environ.get('TWITTER_OAUTH_SECRET', '')
+
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = os.environ.get('GOOGLE_OAUTH2_KEY', '')
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = os.environ.get('GOOGLE_OAUTH2_SECRET', '')
+
+SOCIAL_AUTH_LOGIN_URL = '/auth/login'
+SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/auth/ok'
+SOCIAL_AUTH_LOGIN_ERROR_URL = '/auth/error'
+SOCIAL_AUTH_NEW_USER_REDIRECT_URL = '/auth/newuser'
+SOCIAL_AUTH_NEW_ASSOCIATION_REDIRECT_URL = '/auth/associated'
+SOCIAL_AUTH_DISCONNECT_REDIRECT_URL = '/auth/disconnect'
+SOCIAL_AUTH_INACTIVE_USER_URL = '/auth/inactive'
+AUTHENTICATION_BACKENDS = [
+        'social.backends.google.GoogleOAuth2',
+        'social.backends.twitter.TwitterOAuth',
+        'django.contrib.auth.backends.ModelBackend',
+]
+
+SOCIAL_AUTH_ADMIN_USER_SEARCH_FIELDS = ['username', 'first_name', 'email']
+
+SOCIAL_AUTH_URL_NAMESPACE = 'social'
+
+SOCIAL_AUTH_TWITTER_KEY = os.environ.get('TWITTER_OAUTH_KEY', '')
+SOCIAL_AUTH_TWITTER_SECRET = os.environ.get('TWITTER_OAUTH_SECRET', '')
+
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = os.environ.get('GOOGLE_OAUTH2_KEY', '')
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECfRET = os.environ.get('GOOGLE_OAUTH2_SECRET', '')
+
+SOCIAL_AUTH_LOGIN_URL = '/auth/login'
+SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/auth/ok'
+SOCIAL_AUTH_LOGIN_ERROR_URL = '/auth/error'
+SOCIAL_AUTH_NEW_USER_REDIRECT_URL = '/auth/newuser'
+SOCIAL_AUTH_NEW_ASSOCIATION_REDIRECT_URL = '/auth/associated'
+SOCIAL_AUTH_DISCONNECT_REDIRECT_URL = '/auth/disconnect'
+SOCIAL_AUTH_INACTIVE_USER_URL = '/auth/inactive'
 
 
 # Internationalization
