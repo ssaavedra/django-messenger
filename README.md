@@ -67,6 +67,19 @@ Django is configured to serve those files too, in case you don't put a
 frontend server.
 
 
+Logging in
+==========
+
+If you are an admin, you can log in using Django Admin (leveraging
+Django Sessions) by going to /admin/. If you are not, you can create
+your own user by going to /login/google-oauth2/ after setting your
+OAuth2 configuration variables from Google (which requires creating a
+project in the Google API Console). Those variables may be coded in
+settings.py but it is already engineered to support them as
+environment variables (PaaS-friendly). The variables are
+`GOOGLE_OAUTH2_KEY` and `GOOGLE_OAUTH2_SECRET`, respectively.
+
+
 License
 =======
 
