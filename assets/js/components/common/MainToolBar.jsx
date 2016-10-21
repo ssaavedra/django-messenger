@@ -22,6 +22,7 @@ export default class MainToolBar extends React.Component {
             <LinkContainer to="/about">
               <NavItem>About</NavItem>
             </LinkContainer>
+	    <NavItem href="/admin/">(Django Admin)</NavItem>
           </Nav>
           <LoginComponent />
         </Navbar.Collapse>
