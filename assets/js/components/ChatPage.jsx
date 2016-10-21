@@ -37,7 +37,8 @@ class ChatPage extends React.Component {
   }
 
   renderHeader() {
-    return `Chat with ${this.otherParticipants()} (#${this.chat().id})`
+    let head = this.chat().title ? this.chat().title + ', chat' : 'Chat'
+    return `${head} with ${this.otherParticipants()} (#${this.chat().id})`
   }
 
   getMessages() {

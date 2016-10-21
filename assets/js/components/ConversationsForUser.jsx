@@ -36,6 +36,9 @@ class ConversationsForUser extends React.Component {
   }
 
   renderItem(item) {
+      if (item.title) {
+	  return item.title
+      }
     return `Chat with ${this.otherParticipants(item)} (#${item.id})`
   }
 
