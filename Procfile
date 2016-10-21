@@ -1,0 +1,1 @@
+web: gunicorn djmessenger_config.wsgi --log-file -

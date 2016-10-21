@@ -8,6 +8,7 @@
   },
   "scripts": {
     "preinstall": "node web-tools/nodeVersionCheck.js",
+    "heroku-postbuild": "npm run build",
     "start": "npm-run-all --parallel open:src lint:watch",
     "open:src": "babel-node web-tools/srcServer.js",
     "lint": "esw webpack.config.* assets/js web-tools --color",
