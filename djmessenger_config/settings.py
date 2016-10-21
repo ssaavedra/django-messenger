@@ -175,16 +175,19 @@ MEDIA_URL = '/uploads/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads')
 
-
 STATICFILES_DIRS = (
-    # We do this so that django's collectstatic copies our bundles to the
-    # STATIC_ROOT or syncs them to whatever storage we use
-    os.path.join(BASE_DIR, 'assets'),
+    os.path.join(BASE_DIR, 'assets', 'bundles'),
 )
+
+
+# Simplified static file serving
+# https://warehouse.python.org/project/whitenoise/
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+
 
 WEBPACK_LOADER = {
     'DEFAULT': {
-        'BUNDLE_DIR_NAME': 'bundles/',
+        'BUNDLE_DIR_NAME': '/',
         'STATS_FILE': os.path.join(BASE_DIR, 'webpack-stats.json'),
     }
 }
